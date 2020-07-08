@@ -104,7 +104,7 @@ def take2DInput() :
     mat = [list(map(int, input().strip().split(" "))) for row in range(nRows)] 
     return mat, nRows, mCols
     
-#main 
+# Main 
 t = int(stdin.readline().rstrip()) 
 while t > 0 : 
     mat, nRows, mCols = take2DInput() 

@@ -37,32 +37,57 @@ For a given singly linked list of integers, find and return its length. Do it us
     0
 """
 
+''' 
+    Time Complexity : O(n) 
+    Space Complexity : O(1) 
+    Where 'n' is the size of the Singly Linked List 
+'''
+
+from sys import stdin
+
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
-def length(head):
-    count=0
-    while head is not None:
-        count+=1
-        head=head.next
+def length(head) : 
+    count = 0 
+    temp = head 
+    while temp is not None : 
+        count += 1 
+        temp = temp.next 
     return count
 
-def ll(arr):
-    if len(arr)==0:
-        return None
-    head = Node(arr[0])
-    last = head
-    for data in arr[1:]:
-        last.next = Node(data)
-        last = last.next
+def takeInput() : 
+    head = None 
+    tail = None
+
+    datas = list(map(int, stdin.readline().rstrip().split(" ")))
+
+    i = 0 
+    while (i < len(datas)) and (datas[i] != -1) : 
+        data = datas[i] 
+        newNode = Node(data)
+
+        if head is None : 
+            head = newNode 
+            tail = newNode 
+        else : 
+            tail.next = newNode 
+            tail = newNode
+
+        i += 1 
     return head
 
-# Main
-# Read the link list elements including -1
-arr=list(int(i) for i in input().strip().split(' '))
-# Create a Linked list after removing -1 from list
-l = ll(arr[:-1])
-len=length(l)
-print(len)
+def printLinkedList(head) : 
+    while head is not None : 
+        print(head.data, end = " ") 
+        head = head.next 
+    print()
+
+#main 
+t = int(stdin.readline().strip()) 
+while t > 0 : 
+    head = takeInput() 
+    print(length(head)) 
+    t -= 1
